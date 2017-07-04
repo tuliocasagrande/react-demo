@@ -26,6 +26,7 @@
     "gulp-if-else": "^1.0.3",
     "gulp-uglify": "^1.5.3",
     "jquery": "^2.2.2",
+    "prop-types": "^15.5.10",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-router": "^2.0.1",
