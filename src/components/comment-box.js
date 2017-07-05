@@ -1,6 +1,7 @@
 import React from 'react';
 import jQuery from 'jquery';
 
+import { BASE_URI } from "../constants";
 import Comment from './comment';
 import CommentForm from './comment-form';
 import CommentAvatarList from './comment-avatar-list';
@@ -101,16 +102,21 @@ export default class CommentBox extends React.Component {
     const avatarUrl = 'assets/images/avatars/avatar-default.png';
     const comment = { author, body, avatarUrl };
 
-    jQuery.post('/api/comments', { comment })
-      .success( (newComment) => {
+    jQuery.ajax({
+      method: 'POST',
+      url: `${BASE_URI}/comments`,
+      data: JSON.stringify(comment),
+      contentType: 'application/json',
+      success: (newComment) => {
         this.setState({ comments: this.state.comments.concat([newComment]) });
-      });
+      }
+    });
   }
 
   _fetchComments() {
     jQuery.ajax({
       method: 'GET',
-      url: 'http://localhost:3000/comments',
+      url: `${BASE_URI}/comments`,
       success: (comments) => {
         this.setState({ comments });
       }
@@ -120,7 +126,10 @@ export default class CommentBox extends React.Component {
   _deleteComment(commentID) {
     jQuery.ajax({
       method: 'DELETE',
-      url: `/api/comments/${commentID}`
+      url: `${BASE_URI}/comments/${commentID}`,
+      error: () => {
+        alert("Something went wrong on the API");
+      }
     });
 
     // optimistic update

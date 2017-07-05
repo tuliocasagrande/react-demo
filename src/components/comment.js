@@ -28,7 +28,7 @@ export default class Comment extends React.Component {
 
         <div className="comment-actions">
           <CommentConfirmation onConfirm={this._handleDelete}>
-            Delete comment?
+            Delete comment
           </CommentConfirmation>
           <CommentConfirmation onConfirm={this._toggleAbuse}>
             Report as abuse
