@@ -1,7 +1,6 @@
 import React from 'react';
-import jQuery from 'jquery';
 
-import { BASE_URI } from "../constants";
+import { BASE_URI } from '../constants';
 import Comment from './comment';
 import CommentForm from './comment-form';
 import CommentAvatarList from './comment-avatar-list';
@@ -102,35 +101,44 @@ export default class CommentBox extends React.Component {
     const avatarUrl = 'assets/images/avatars/avatar-default.png';
     const comment = { author, body, avatarUrl };
 
-    jQuery.ajax({
-      method: 'POST',
-      url: `${BASE_URI}/comments`,
-      data: JSON.stringify(comment),
-      contentType: 'application/json',
-      success: (newComment) => {
+    fetch(`${BASE_URI}/comments`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(comment)
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((newComment) => {
         this.setState({ comments: this.state.comments.concat([newComment]) });
-      }
-    });
+      })
+      .catch((error) => {
+        console.log(`Something went wrong on the API: ${error}`);
+      });
   }
 
   _fetchComments() {
-    jQuery.ajax({
-      method: 'GET',
-      url: `${BASE_URI}/comments`,
-      success: (comments) => {
+    fetch(`${BASE_URI}/comments`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((comments) => {
         this.setState({ comments });
-      }
-    });
+      })
+      .catch((error) => {
+        console.log(`Something went wrong on the API: ${error}`);
+      });
   }
 
   _deleteComment(commentID) {
-    jQuery.ajax({
-      method: 'DELETE',
-      url: `${BASE_URI}/comments/${commentID}`,
-      error: () => {
-        alert("Something went wrong on the API");
-      }
-    });
+    fetch(`${BASE_URI}/comments/${commentID}`, {
+        method: 'DELETE'
+      })
+      .catch((error) => {
+        console.log(`Something went wrong on the API: ${error}`);
+      });
 
     // optimistic update
     const comments = this.state.comments.filter(
