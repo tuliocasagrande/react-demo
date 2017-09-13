@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { BASE_URI } from '../constants';
 import Comment from './comment';
@@ -97,11 +98,15 @@ export default class CommentBox extends React.Component {
     }
   }
 
+  _getApiUrl() {
+    return `${BASE_URI}/${this.props.apiPath}/comments`;
+  }
+
   _addComment(author, body) {
     const avatarUrl = 'assets/images/avatars/avatar-default.png';
     const comment = { author, body, avatarUrl };
 
-    fetch(`${BASE_URI}/comments`, {
+    fetch(this._getApiUrl(), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -120,7 +125,7 @@ export default class CommentBox extends React.Component {
   }
 
   _fetchComments() {
-    fetch(`${BASE_URI}/comments`)
+    fetch(this._getApiUrl())
       .then((response) => {
         return response.json();
       })
@@ -133,7 +138,7 @@ export default class CommentBox extends React.Component {
   }
 
   _deleteComment(commentID) {
-    fetch(`${BASE_URI}/comments/${commentID}`, {
+    fetch(`${this._getApiUrl()}/${commentID}`, {
         method: 'DELETE'
       })
       .catch((error) => {
@@ -154,4 +159,8 @@ export default class CommentBox extends React.Component {
     });
   }
 
+}
+
+CommentBox.propTypes = {
+  apiPath: PropTypes.string.isRequired
 }

@@ -13,7 +13,7 @@ export default class PicturePage extends React.Component {
           </article>
         </div>
 
-        <CommentBox />
+        <CommentBox apiPath="picture" />
       </div>
     )
   }

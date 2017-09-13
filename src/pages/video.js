@@ -13,7 +13,7 @@ export default class VideoPage extends React.Component {
           </article>
         </div>
 
-        <CommentBox />
+        <CommentBox apiPath="video"/>
       </div>
     )
   }

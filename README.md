@@ -16,7 +16,7 @@ Made by following the following screencast series:
 
 # Running
 
-First, run the API with `json-server server/db.json`
+First, run the API with `json-server server/db.json --routes server/routes.json`
 
 Then open another terminal and run `npm start`, which will open the browser with the application running.
 

@@ -1,0 +1,5 @@
+{
+  "/blog/comments": "/blog_comments",
+  "/picture/comments": "/picture_comments",
+  "/video/comments": "/video_comments"
+}
