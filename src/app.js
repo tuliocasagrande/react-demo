@@ -20,5 +20,5 @@ const app = (
 
 ReactDOM.render(
   app,
-  document.getElementById('comment-box')
+  document.getElementById('app')
 );
