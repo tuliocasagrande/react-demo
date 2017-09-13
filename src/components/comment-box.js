@@ -11,7 +11,7 @@ export default class CommentBox extends React.Component {
     super();
 
     this.state = {
-      showComments: true,
+      showComments: false,
       comments: []
     };
 
