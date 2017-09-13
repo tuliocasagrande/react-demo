@@ -706,3 +706,24 @@ p {
 .top-menu > ul > li a:hover {
   text-decoration: underline;
 }
+
+.toggle-comments-button {
+  background-color: #6ba2aa;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  display: inline-block;
+  font-weight: 700;
+  line-height: 3;
+  padding: 0 40px;
+  text-transform: uppercase;
+  transition: 0.2s ease-in-out;
+  margin-bottom: 20px;
+}
+
+.toggle-comments-button:active,
+.toggle-comments-button:focus,
+.toggle-comments-button:hover {
+  color: #6ba2aa;
+  background-color: #9ecbd2;
+}

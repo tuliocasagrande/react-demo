@@ -15,7 +15,7 @@ export default class CommentBox extends React.Component {
       comments: []
     };
 
-    this._handleClick = this._handleClick.bind(this);
+    this._toggleComments = this._toggleComments.bind(this);
     this._addComment = this._addComment.bind(this);
     this._deleteComment = this._deleteComment.bind(this);
   }
@@ -36,32 +36,32 @@ export default class CommentBox extends React.Component {
   }
 
   render() {
-    const buttonText = (!this.state.showComments) ? 'Show comments' : 'Hide comments';
+    const showCommentsText = (!this.state.showComments) ? 'Join the discussion' : 'Hide comments';
     const comments = this._getComments();
 
-    let commentNodes;
+    let commentBox;
     if (this.state.showComments) {
-      commentNodes = <div className="comment-list">{comments}</div>;
+      commentBox = (
+        <div className="comment-box">
+          <CommentForm addComment={this._addComment} />
+          <CommentAvatarList avatars={this._getAvatars()} />
+
+          {this._getPopularMessage(comments.length)}
+          <h3 className="comment-count">{this._getCommentsTitle(comments.length)}</h3>
+          <div className="comment-list">
+            <div className="comment-list">{comments}</div>
+          </div>
+        </div>
+      );
     }
 
     return (
       <div className="row comments-container">
         <div className="cell">
-          <h2>Join The Discussion</h2>
-          <button onClick={this._handleClick}>{buttonText}</button>
-          <div className="comment-box">
-            <CommentForm addComment={this._addComment} />
-            <CommentAvatarList avatars={this._getAvatars()} />
-
-            {this._getPopularMessage(comments.length)}
-            <h3 className="comment-count">{this._getCommentsTitle(comments.length)}</h3>
-            <div className="comment-list">
-              {commentNodes}
-            </div>
-          </div>
+          <button className="toggle-comments-button" onClick={this._toggleComments}>{showCommentsText}</button>
+          {commentBox}
         </div>
       </div>
-
     );
   }
 
@@ -148,7 +148,7 @@ export default class CommentBox extends React.Component {
     this.setState({ comments });
   }
 
-  _handleClick() {
+  _toggleComments() {
     this.setState({
       showComments: !this.state.showComments
     });
