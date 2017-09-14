@@ -2,7 +2,7 @@
 
 Sample app built using react, ES2015 features, gulp and json-server.
 
-Made by following the following screencast series:
+Made by following the screencast series below:
 1. https://www.codeschool.com/screencasts/add-a-build-system-to-a-react-application
 2. https://www.codeschool.com/screencasts/es2015-and-the-virtual-dom-in-a-react-application
 3. https://www.codeschool.com/screencasts/add-a-router-to-a-react-application
