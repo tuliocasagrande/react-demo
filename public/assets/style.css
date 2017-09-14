@@ -708,10 +708,10 @@ p {
 }
 
 .toggle-comments-button {
-  background-color: #6ba2aa;
+  background-color: #9ecbd2;
   border: 0;
   border-radius: 10px;
-  color: #fff;
+  color: #6ba2aa;
   display: inline-block;
   font-weight: 700;
   line-height: 3;
@@ -724,10 +724,15 @@ p {
 .toggle-comments-button:active,
 .toggle-comments-button:focus,
 .toggle-comments-button:hover {
-  color: #6ba2aa;
-  background-color: #9ecbd2;
+  background-color: #aedbe2;
 }
 
 .character-count {
   color: #6ba2aa;
+}
+
+.popular-post-message {
+  color: #9ecbd2;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }

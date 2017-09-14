@@ -46,8 +46,6 @@ export default class CommentBox extends React.Component {
         <div className="comment-box">
           <CommentForm addComment={this._addComment} />
           <CommentAvatarList avatars={this._getAvatars()} />
-
-          {this._getPopularMessage(comments.length)}
           <h3 className="comment-count">{this._getCommentsTitle(comments.length)}</h3>
           <div className="comment-list">
             <div className="comment-list">{comments}</div>
@@ -59,6 +57,7 @@ export default class CommentBox extends React.Component {
     return (
       <div className="row comments-container">
         <div className="cell">
+          {this._getPopularMessage(comments.length)}
           <button className="toggle-comments-button" onClick={this._toggleComments}>{showCommentsText}</button>
           {commentBox}
         </div>
@@ -71,10 +70,10 @@ export default class CommentBox extends React.Component {
   }
 
   _getPopularMessage(commentCount) {
-    const POPULAR_COUNT = 10;
-    if (commentCount > POPULAR_COUNT) {
+    const POPULAR_COUNT = 5;
+    if (commentCount >= POPULAR_COUNT) {
        return (
-         <div>This post is getting really popular, dont miss out!</div>
+         <h4 className="popular-post-message">This post is getting really popular, don't miss out!</h4>
        );
     }
   }

@@ -17,6 +17,18 @@
       "body": "Great picture!",
       "avatarUrl": "assets/images/avatars/avatar-sumo.png",
       "id": 3
+    },
+    {
+      "author": "Mr. Bubblehead",
+      "body": "I feel dizzy",
+      "avatarUrl": "assets/images/avatars/avatar-default.png",
+      "id": 4
+    },
+    {
+      "author": "Copycat",
+      "body": "I'm great, thanks for asking, how are you?",
+      "avatarUrl": "assets/images/avatars/avatar-default.png",
+      "id": 5
     }
   ],
   "picture_comments": [
